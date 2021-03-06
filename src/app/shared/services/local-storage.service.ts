@@ -16,4 +16,12 @@ export class LocalStorageService {
       return false;
     }
   }
+
+  public getItem(key: string): any {
+    try {
+      return JSON.parse(localStorage.getItem(key));
+    } catch {
+      return null;
+    }
+  }
 }
