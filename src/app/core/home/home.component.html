@@ -1,1 +1,9 @@
-<p>home works!</p>
+{{ place }}
+
+<ng-container *ngFor="let weather of weatherForecast$ | async">
+    Dia: {{ weather.dt_txt }} <br>
+    Máx: {{ weather.main.temp_max | number: '1.0-0' }} °C<br>
+    Min: {{ weather.main.temp_min | number: '1.0-0' }} °C<br>
+    Temperatura: {{ weather.main.temp | number: '1.0-0' }} °C<br>
+    Umidade: {{ weather.main.humidity }}% <br><br>
+</ng-container>

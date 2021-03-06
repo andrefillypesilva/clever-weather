@@ -10,6 +10,9 @@ import { SharedModule } from './shared/shared.module';
 // Components
 import { AppComponent } from './app.component';
 
+// Interceptors
+import { httpInterceptorProviders } from './shared/interceptors';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -19,7 +22,7 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     SharedModule
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

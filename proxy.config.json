@@ -1,11 +1,18 @@
 {
   "/api": {
     "target": "https://www.metaweather.com/api/",
-    "secure": false,
-    "logLevel": "debug",
+    "secure": true,
     "changeOrigin": true,
     "pathRewrite": {
       "^/api": ""
+    }
+  },
+  "/openweathermap": {
+    "target": "http://api.openweathermap.org",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/openweathermap": "/data/2.5/"
     }
   }
 }
