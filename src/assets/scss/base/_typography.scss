@@ -1,0 +1,16 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.primary-heading {
+    color: $primary-color;
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.paragraph {
+    font-size: 1.8rem;
+}
