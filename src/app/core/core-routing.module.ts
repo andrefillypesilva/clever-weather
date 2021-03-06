@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 // Guards
 import { FirstAccessGuard } from '../shared/guards/first-access.guard';
+import { NotFirstAccessGuard } from '../shared/guards/not-first-access.guard';
 
 // Components
 import { HomeComponent } from './home/home.component';
@@ -16,7 +17,8 @@ const routes: Routes = [
     },
     {
         path: 'home',
-        component: HomeComponent
+        component: HomeComponent,
+        canActivate: [NotFirstAccessGuard]
     }
 ];
 
