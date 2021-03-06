@@ -1,1 +1,38 @@
-<p>onboarding works!</p>
+<div class="onboarding">
+  <ng-container *ngIf="step === 1">
+    <figure class="onboarding__figure">
+      <img src="..." alt="onboarding-1" class="onboarding__figure--image" />
+      <figcaption class="onboarding__figure--caption">
+        <h1 class="primary-heading">Perfect Weather Explorer</h1>
+        <p class="paragraph">
+          Here you can find everything about weather around the world!
+        </p>
+      </figcaption>
+    </figure>
+    <div class="onboarding-button-box">
+      <div class="onboarding-button-box__next">
+        <button (click)="next()">Next</button>
+      </div>
+      <div class="onboarding-button-box__skip">
+        <button>Skip</button>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="step === 2">
+    <figure class="onboarding__figure">
+      <img src="..." alt="onboarding-1" class="onboarding__figure--image" />
+      <figcaption class="onboarding__figure--caption">
+        <h1 class="primary-heading">Any city in your hand!</h1>
+        <p class="paragraph">
+          Search the city you want to know about the weather and have fun!
+        </p>
+      </figcaption>
+    </figure>
+    <div class="onboarding-button-box">
+      <div class="onboarding-button-box__next">
+        <button (click)="finish()">Finish</button>
+      </div>
+    </div>
+  </ng-container>
+</div>
