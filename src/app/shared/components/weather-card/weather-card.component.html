@@ -1,4 +1,16 @@
-<div>
+<ng-container *ngIf="isShare">
+  <h3 class="tertiary-heading">
+    <span class="tertiary-heading--small">This application is free to use</span>
+  </h3>
+  <h3 class="tertiary-heading" (click)="share()">
+    <a href="javascript:void(0)">Click here and Share with a friend</a>
+  </h3>
+  <h3 class="tertiary-heading">
+    <span class="tertiary-heading--small">Developed by: </span> <span class="tertiary-heading--big">André Fillype</span>
+  </h3>
+</ng-container>
+
+<ng-container *ngIf="!isShare">
   <h3 class="tertiary-heading">{{ weather.applicable_date | date: 'short' }}</h3>
   <div class="main-weather">
     <h3 class="main-weather__value">{{ weather.the_temp | number: "1.0-0" }}°</h3>
@@ -12,4 +24,5 @@
   <h3 class="tertiary-heading">
     <span class="tertiary-heading--small">Wind speed: {{ weather.wind_speed | number: "1.2-2" }}mph / Wind direction: {{ weather.wind_direction | number: "1.2-2" }}°</span>
   </h3>
-</div>
+</ng-container>
+  
