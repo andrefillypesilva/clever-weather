@@ -1,63 +1,6 @@
 <div class="onboarding">
-  <div class="onboarding__container">
-    <ng-container *ngIf="step === 1">
-      <figure class="onboarding__figure">
-        <img
-          src="assets/images/onboarding/map.svg"
-          alt="onboarding-1"
-          class="onboarding__figure--image"
-        />
-        <figcaption class="onboarding__figure--caption">
-          <h2 class="secondary-heading">Perfect Weather Explorer</h2>
-          <p class="paragraph">
-            Here you can find everything about weather around the world!
-          </p>
-        </figcaption>
-      </figure>
-      <div class="onboarding-button-box">
-        <div class="onboarding-button-box__next">
-          <a
-            href="javascript:void(0)"
-            (click)="next()"
-            class="btn btn--secondary"
-            >Next</a
-          >
-        </div>
-        <div class="onboarding-button-box__skip">
-          <a
-            href="javascript:void(0)"
-            (click)="finish()"
-            class="btn btn--primary"
-            >Skip</a
-          >
-        </div>
-      </div>
-    </ng-container>
-
-    <ng-container *ngIf="step === 2">
-      <figure class="onboarding__figure">
-        <img
-          src="assets/images/onboarding/mobile.svg"
-          alt="onboarding-1"
-          class="onboarding__figure--image"
-        />
-        <figcaption class="onboarding__figure--caption">
-          <h2 class="secondary-heading">Any city in your hand!</h2>
-          <p class="paragraph">
-            Search the city you want to know about the weather and have fun!
-          </p>
-        </figcaption>
-      </figure>
-      <div class="onboarding-button-box">
-        <div class="onboarding-button-box__next">
-          <a
-            href="javascript:void(0)"
-            (click)="finish()"
-            class="btn btn--primary"
-            >Finish</a
-          >
-        </div>
-      </div>
-    </ng-container>
-  </div>
+  <ng-container *ngFor="let onboarding of onboardingList">
+    <app-onboarding-card [onboarding]="onboarding" *ngIf="onboarding.step === step"
+    (onNext)="next()" (onFinish)="finish()"></app-onboarding-card>
+  </ng-container>
 </div>

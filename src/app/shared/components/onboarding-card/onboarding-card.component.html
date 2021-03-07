@@ -1,0 +1,19 @@
+<div class="onboarding__container">
+    <figure class="onboarding__figure">
+        <img src="assets/images/onboarding/{{ onboarding.icon }}.svg" alt="onboarding-1" class="onboarding__figure--image" />
+        <figcaption class="onboarding__figure--caption">
+            <h2 class="secondary-heading">{{ onboarding.title }}</h2>
+            <p class="paragraph">{{ onboarding.description }}</p>
+        </figcaption>
+    </figure>
+    <div class="onboarding-button-box">
+        <div class="onboarding-button-box__next" *ngIf="onboarding.step !== 2">
+            <a href="javascript:void(0)" (click)="next()" class="btn btn--secondary">Next</a>
+        </div>
+        <div class="onboarding-button-box__skip">
+            <a href="javascript:void(0)" (click)="finish()" class="btn btn--primary">
+                {{ onboarding.step === 2 ? 'Finish' : 'Skip' }}
+            </a>
+        </div>
+    </div>
+</div>

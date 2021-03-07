@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 // Interfaces
 import { Place } from 'src/app/models/interfaces/place.interface';
@@ -8,6 +9,7 @@ import { ConsolidatedWeather } from 'src/app/models/interfaces/consolidated-weat
 
 // Services
 import { WeatherService } from 'src/app/shared/services/weather.service';
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 
 @Component({
   selector: 'app-home',
@@ -24,7 +26,9 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private readonly weatherService: WeatherService,
-    private readonly fb: FormBuilder
+    private readonly fb: FormBuilder,
+    private readonly localStorageService: LocalStorageService,
+    private readonly router: Router
   ) {
     this.formGroup = this.fb.group({
       query: [null]
@@ -42,7 +46,7 @@ export class HomeComponent implements OnInit {
       });
 
     }, () => {
-      alert('user not allowed');
+      this.forceGeolocationAccess();
     });
   }
 
@@ -51,6 +55,12 @@ export class HomeComponent implements OnInit {
       this.place = `${data[0].title} <span>(based on the search you have done)</span>`;
       this.consolidatedWeather$ = this.weatherService.getWeather(data[0].woeid);
     });
+  }
+
+  private forceGeolocationAccess(): void {
+    alert('To use this app, you need to allow geolocation.');
+    this.localStorageService.clearLocalStorage();
+    this.router.navigate(['/']);
   }
 
 }
