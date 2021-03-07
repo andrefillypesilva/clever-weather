@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 
 // Interfaces
 import { ConsolidatedWeather } from 'src/app/models/interfaces/consolidated-weather.interface';
@@ -11,7 +10,7 @@ import { ConsolidatedWeather } from 'src/app/models/interfaces/consolidated-weat
 })
 export class WeatherBoxComponent implements OnInit {
 
-  @Input('consolidatedWeather') public consolidatedWeather$: Observable<ConsolidatedWeather[]>;
+  @Input() public consolidatedWeather: ConsolidatedWeather[];
 
   constructor() { }
 

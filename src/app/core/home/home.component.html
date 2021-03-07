@@ -5,9 +5,7 @@
         <h1 class="primary-heading">
           <span class="primary-heading__support">Welcome to</span>
           <span class="primary-heading__main" [innerHTML]="place"></span>
-          <span class="primary-heading__subtitle"
-            >This is the forecast for the next 5 days for this location</span
-          >
+          <span class="primary-heading__subtitle">This is the forecast for the next 5 days for this location</span>
         </h1>
       </div>
       <div class="header__container--right">
@@ -21,5 +19,5 @@
       </div>
     </div>
   </div>
-  <app-weather-box [consolidatedWeather]="consolidatedWeather$"></app-weather-box>
+  <app-weather-box *ngIf="consolidatedWeather$ | async as consolidatedWeather" [consolidatedWeather]="consolidatedWeather"></app-weather-box>
 </div>
