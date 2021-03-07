@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 // Interfaces
@@ -19,9 +20,16 @@ export class HomeComponent implements OnInit {
   
   public weatherForecast$: Observable<WeatherForecast[]>;
 
+  public formGroup: FormGroup;
+
   constructor(
-    private readonly weatherService: WeatherService
-  ) { }
+    private readonly weatherService: WeatherService,
+    private readonly fb: FormBuilder
+  ) {
+    this.formGroup = this.fb.group({
+      query: [null]
+    });
+  }
 
   ngOnInit(): void {
     navigator.geolocation.getCurrentPosition(position => {
@@ -29,13 +37,20 @@ export class HomeComponent implements OnInit {
       let long = position.coords.longitude;
       
       this.weatherService.getPlace(lat, long).subscribe((data: Place[]) => {
-        this.place = data[0].title;
+        this.place = `${data[0].title} <span>(based on your geolocation)</span>`;
 
         this.weatherForecast$ = this.weatherService.getWeather(data[0].title);
       });
 
     }, () => {
       alert('user not allowed');
+    });
+  }
+
+  search(): void {
+    this.weatherService.getPlaceByName(this.formGroup.get('query').value).subscribe((data: any) => {
+      this.place = `${data.name}, ${data.country}`;
+      this.weatherForecast$ = this.weatherService.getWeather(this.formGroup.get('query').value);
     });
   }
 

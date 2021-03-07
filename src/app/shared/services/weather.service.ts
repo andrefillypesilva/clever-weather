@@ -22,8 +22,15 @@ export class WeatherService {
     return this.http.get<Place[]>(`/api/location/search/?lattlong=${lat},${long}`);
   }
 
+  public getPlaceByName(title: string): Observable<any> {
+    return this.http.get<Place[]>(`/openweathermap/forecast?q=${title}&units=metric&appid=${environment.openWeatherMapKey}`)
+    .pipe(
+      pluck('city')
+    );
+  }
+
   public getWeather(title: string): Observable<WeatherForecast[]> {
-    return this.http.get<any>(`/openweathermap/forecast?q=${title}&units=metric&appid=${environment.openWeatherMapKey}`)
+    return this.http.get<WeatherForecast[]>(`/openweathermap/forecast?q=${title}&units=metric&appid=${environment.openWeatherMapKey}`)
     .pipe(
       pluck('list'),
       map((forecast: WeatherForecast[]) => {

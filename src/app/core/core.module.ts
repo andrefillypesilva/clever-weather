@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Routing
 import { CoreRoutingModule } from './core-routing.module';
@@ -12,7 +13,9 @@ import { OnboardingComponent } from './onboarding/onboarding.component';
   declarations: [HomeComponent, OnboardingComponent],
   imports: [
     CommonModule,
-    CoreRoutingModule
+    CoreRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class CoreModule { }

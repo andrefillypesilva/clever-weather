@@ -12,6 +12,10 @@ body {
         color: $primary-color;
         text-transform: uppercase;
         font-size: 5rem;
+
+        span {
+            font-size: 2.5rem;
+        }
     }
 
     &__subtitle {
