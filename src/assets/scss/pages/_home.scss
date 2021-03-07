@@ -1,0 +1,50 @@
+.home {
+    background-image: url('/assets/images/home/bg.jpg');
+    background-size: cover;
+    
+    padding: 3rem;
+
+    .weather-cards-box {
+        margin-top: 2rem;
+        @include clearfix;
+
+        .weather-main-card, .weather-support-card {
+            box-sizing: border-box;
+            background: rgba(255, 255, 255, .8);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 .5rem 1rem rgba($dark, 0.15);
+            text-align: center;
+        }
+        
+        .weather-main-card {
+            width: 100%;
+        }
+
+        .weather-support-card {
+            width: calc((100% - 6rem) / 4);
+            float: left;
+
+            &:not(:last-child) {
+                margin-right: 2rem;
+            }
+        
+            @include respond(tab-port) {
+                width: calc((100% - 2rem) / 2);
+                &:nth-child(even) {
+                    margin-right: 2rem !important;
+                }
+                
+                &:nth-child(odd) {
+                    margin-right: 0rem !important;
+                }
+            }
+        
+            @include respond(phone) {
+                width: 100%;
+                margin-right: 0;
+            }
+        }
+    }
+}
