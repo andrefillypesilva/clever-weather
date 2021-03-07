@@ -56,11 +56,7 @@ export class OnboardingComponent implements OnInit {
   }
 
   public finish(): void {
-    if (this.setLocalStorageFinished()) {
-      this.askForGeolocationAccessAndFinish();
-    } else {
-      alert('Something went wrong! We can not save your local storage first access.');
-    }
+    this.askForGeolocationAccess();
   }
 
   private setLocalStorageFinished(): boolean {
@@ -68,9 +64,13 @@ export class OnboardingComponent implements OnInit {
     return response;
   }
 
-  private askForGeolocationAccessAndFinish(): void {
+  private askForGeolocationAccess(): void {
     navigator.geolocation.getCurrentPosition(() => {
-      this.router.navigate(['/home']);
+      if (this.setLocalStorageFinished()) {
+        this.router.navigate(['/home']);
+      } else {
+        alert('Something went wrong! We can not save your local storage first access.');
+      }
     }, () => {
       alert('To use this app, you need to allow geolocation.');
     });
