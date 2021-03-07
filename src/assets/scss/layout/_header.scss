@@ -4,6 +4,10 @@
 
         &--left {
             float: left;
+
+            @include respond(tab-port) {
+                float: initial;
+            }
         }
 
         &--right {
@@ -15,6 +19,17 @@
                     height: 40px;
                     border-radius: 1rem;
                     border: 1px solid $dark;
+                }
+            }
+
+            @include respond(tab-port) {
+                float: initial;
+                margin-top: 2rem;
+
+                form {
+                    input {
+                        width: 100%;
+                    }
                 }
             }
         }
