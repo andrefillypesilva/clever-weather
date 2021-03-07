@@ -48,10 +48,27 @@ body {
 }
 
 .main-weather {
-    font-size: 8rem;
-    font-weight: lighter;
+    position: relative;
     display: inline-block;
     margin: 2rem 0 2rem 0;
+
+    &__value {
+        font-size: 8rem;
+        font-weight: lighter;
+        float: left;
+        margin-right: 6rem;
+    }
+
+    &__image {
+        position: absolute;
+        top: 0;
+        right: 0;
+        float: right;
+
+        img {
+            width: 6rem;
+        }
+    }
 }
 
 .paragraph {

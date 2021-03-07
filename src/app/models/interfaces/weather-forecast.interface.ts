@@ -1,21 +1,19 @@
+// Interfaces
+import { ConsolidatedWeather } from "./consolidated-weather.interface";
+import { WeatherParent } from "./weather-parent.interface";
+import { WeatherSource } from "./weather-source.interface";
+
 export interface WeatherForecast {
-  dt: number,
-  main: {
-    temp: number,
-    feels_like: number,
-    temp_min: number,
-    temp_max: number,
-    pressure: number,
-    sea_level: number,
-    grnd_level: number,
-    humidity: number,
-    temp_kf: number
-  },
-  weather: [{ id: number, main: string, description: string, icon: string }],
-  clouds: { all: number },
-  wind: { speed: number, deg: number },
-  visibility: number,
-  pop: number,
-  sys: { pod: string },
-  dt_txt: string
+  consolidated_weather: ConsolidatedWeather[],
+  time: string,
+  sun_rise: string,
+  sun_set: string,
+  timezone_name: string,
+  parent: WeatherParent,
+  sources: WeatherSource[],
+  title: string,
+  location_type: string,
+  woeid: number,
+  latt_long: string,
+  timezone: string
 }

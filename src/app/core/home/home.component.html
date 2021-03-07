@@ -1,31 +1,57 @@
 <div class="home">
-    <div class="header">
-        <div class="header__container">
-            <div class="header__container--left">
-                <h1 class="primary-heading">
-                    <span class="primary-heading__support">Welcome to</span>
-                    <span class="primary-heading__main" [innerHTML]="place"></span>
-                    <span class="primary-heading__subtitle">This is the forecast for the next 5 days for this location</span>
-                </h1>
-            </div>
-            <div class="header__container--right">
-                <form [formGroup]="formGroup" (submit)="search()">
-                    <input type="text" placeholder="Search a place..." formControlName="query">
-                </form>
-            </div>
-        </div>
+  <div class="header">
+    <div class="header__container">
+      <div class="header__container--left">
+        <h1 class="primary-heading">
+          <span class="primary-heading__support">Welcome to</span>
+          <span class="primary-heading__main" [innerHTML]="place"></span>
+          <span class="primary-heading__subtitle"
+            >This is the forecast for the next 5 days for this location</span
+          >
+        </h1>
+      </div>
+      <div class="header__container--right">
+        <form [formGroup]="formGroup" (submit)="search()">
+          <input
+            type="text"
+            placeholder="Search a place..."
+            formControlName="query"
+          />
+        </form>
+      </div>
     </div>
-    <div class="weather-cards-box">
-        <div [class.weather-main-card]="i === 0" [class.weather-support-card]="i !== 0" *ngFor="let weather of weatherForecast$ | async; let i = index">
-            <h3 class="tertiary-heading">
-                {{ weather.dt_txt | date: short }}
-            </h3>
-            <h3 class="main-weather">
-                {{ weather.main.temp | number: '1.0-0' }}°
-            </h3>
-            <h3 class="tertiary-heading">
-                <span class="tertiary-heading--small">Min: </span>{{ weather.main.temp_min | number: '1.0-0' }}° / <span class="tertiary-heading--small">Máx: </span>{{ weather.main.temp_max | number: '1.0-0' }}° - <span class="tertiary-heading--big"><span class="tertiary-heading--small">Feels like </span>{{ weather.main.feels_like | number: '1.0-0' }}°</span>
-            </h3>
+  </div>
+  <div class="weather-cards-box">
+    <ng-container
+      *ngFor="let weather of consolidatedWeather$ | async; let i = index"
+    >
+      <div
+        [class.weather-main-card]="i === 0"
+        [class.weather-support-card]="i !== 0"
+      >
+        <h3 class="tertiary-heading">
+          {{ weather.applicable_date | date: short }}
+        </h3>
+        <div class="main-weather">
+            <h3 class="main-weather__value">{{ weather.the_temp | number: "1.0-0" }}°</h3>
+            <figure class="main-weather__image">
+                <img src="https://www.metaweather.com/static/img/weather/{{ weather.weather_state_abbr }}.svg" alt="{{ weather.weather_state_name }}">
+            </figure>
         </div>
-    </div>
+        <h3 class="tertiary-heading">
+          <span class="tertiary-heading--small">Min: </span
+          >{{ weather.min_temp | number: "1.0-0" }}° /
+          <span class="tertiary-heading--small">Máx: </span
+          >{{ weather.max_temp | number: "1.0-0" }}° -
+          <span class="tertiary-heading--big"
+            ><span class="tertiary-heading--small">Humidity </span
+            >{{ weather.humidity | number: "1.0-0" }}%</span
+          >
+        </h3>
+        <h3 class="tertiary-heading">
+            <span class="tertiary-heading--small">Wind speed: {{ weather.wind_speed | number: "1.2-2" }}mph / Wind direction: {{ weather.wind_direction | number: "1.2-2" }}°</span>
+        </h3>
+      </div>
+    </ng-container>
+  </div>
 </div>

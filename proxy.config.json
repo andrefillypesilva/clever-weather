@@ -1,18 +1,10 @@
 {
   "/api": {
-    "target": "https://www.metaweather.com/api/",
+    "target": "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/",
     "secure": true,
     "changeOrigin": true,
     "pathRewrite": {
       "^/api": ""
-    }
-  },
-  "/openweathermap": {
-    "target": "http://api.openweathermap.org",
-    "secure": true,
-    "changeOrigin": true,
-    "pathRewrite": {
-      "^/openweathermap": "/data/2.5/"
     }
   }
 }
