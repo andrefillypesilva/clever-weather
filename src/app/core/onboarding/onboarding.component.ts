@@ -12,8 +12,7 @@ import { LocalStorageService } from 'src/app/shared/services/local-storage.servi
 
 @Component({
   selector: 'app-onboarding',
-  templateUrl: './onboarding.component.html',
-  styleUrls: ['./onboarding.component.scss']
+  templateUrl: './onboarding.component.html'
 })
 export class OnboardingComponent implements OnInit {
 
@@ -59,9 +58,19 @@ export class OnboardingComponent implements OnInit {
     this.askForGeolocationAccess();
   }
 
+  // For Unit Tests: setLocalStorageFinished()
+  public testingSetLocalStorageFinished(): void {
+    this.setLocalStorageFinished();
+  }
+
   private setLocalStorageFinished(): boolean {
     let response = this.localStorageService.setItem(LOCALSTORAGECONFIG.FIRST_ACCESS, true);
     return response;
+  }
+
+  // For Unit Tests: askForGeolocationAccess()
+  public testingAskForGeolocationAccess(): void {
+    this.askForGeolocationAccess();
   }
 
   private askForGeolocationAccess(): void {
