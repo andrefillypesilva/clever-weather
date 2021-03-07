@@ -5,6 +5,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // Routing
 import { CoreRoutingModule } from './core-routing.module';
 
+// Modules
+import { SharedModule } from '../shared/shared.module';
+
 // Components
 import { HomeComponent } from './home/home.component';
 import { OnboardingComponent } from './onboarding/onboarding.component';
@@ -16,6 +19,7 @@ import { OnboardingComponent } from './onboarding/onboarding.component';
     CoreRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class CoreModule { }

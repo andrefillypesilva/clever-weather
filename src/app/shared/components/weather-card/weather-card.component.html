@@ -1,0 +1,15 @@
+<div>
+  <h3 class="tertiary-heading">{{ weather.applicable_date | date: 'short' }}</h3>
+  <div class="main-weather">
+    <h3 class="main-weather__value">{{ weather.the_temp | number: "1.0-0" }}°</h3>
+    <figure class="main-weather__image">
+      <img src="https://www.metaweather.com/static/img/weather/{{ weather.weather_state_abbr }}.svg" alt="{{ weather.weather_state_name }}"/>
+    </figure>
+  </div>
+  <h3 class="tertiary-heading">
+    <span class="tertiary-heading--small">Min: </span>{{ weather.min_temp | number: "1.0-0" }}° / <span class="tertiary-heading--small">Máx: </span>{{ weather.max_temp | number: "1.0-0" }}° - <span class="tertiary-heading--big"><span class="tertiary-heading--small">Humidity </span>{{ weather.humidity | number: "1.0-0" }}%</span>
+  </h3>
+  <h3 class="tertiary-heading">
+    <span class="tertiary-heading--small">Wind speed: {{ weather.wind_speed | number: "1.2-2" }}mph / Wind direction: {{ weather.wind_direction | number: "1.2-2" }}°</span>
+  </h3>
+</div>

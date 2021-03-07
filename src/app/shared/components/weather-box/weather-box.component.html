@@ -1,0 +1,7 @@
+<div class="weather-cards-box">
+  <ng-container
+    *ngFor="let weather of consolidatedWeather$ | async; let f = first"
+  >
+  <app-weather-card [weather]="weather" [class.weather-main-card]="f" [class.weather-support-card]="!f"></app-weather-card>
+  </ng-container>
+</div>
