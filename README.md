@@ -21,19 +21,19 @@ This project is organized in two main modules: **core** (for pages) and **shared
 In the file `app-routing.module.ts` you have a lazy loading for **core module** (it is a simple implementation made for the purpose of showing this feature).
 
 #### Router Guard
-It has been created two simple guards to implement an onboarding component for first access. `shared/guards/first-access.guard.ts` allows you to access onboarding if it is you first-access and redirects you for home page if it is not. `shared/guards/not-first-access.guard.ts` allows you to access home page if it is not your first-access and redirects you for onboarding if it is.
+It has been created two simple guards to implement an onboarding component for first access. `shared/guards/first-access.guard.ts` allows you to access onboarding if it is your first-access and redirects you for home page if it is not. `shared/guards/not-first-access.guard.ts` allows you to access home page if it is not your first-access and redirects you for onboarding if it is.
 
 #### Interceptors
 The `shared/interceptors/request.interceptor.ts` file is an implementation of a interceptor that put headers in the request before do it.
 
 #### Reactive Forms
-It has been done a simple implementation of **reactive forms** in the `core/home/home.component.ts` file. It is created just to show you how to use **FormBuilder** dependency injection to use a reactive form.
+It has been done a simple implementation of **reactive forms** in the `core/home/home.component.ts` file. It is created just to show you how to use **FormBuilder** dependency injection to create a reactive form.
 
 #### Usage of re-usable components
 In the **shared module** there are three re-usable components which are:
 - onboarding-card (it  is used in **onboarding** component)
 - weather-box (it is used in **home** component)
-- weathher-card (it is used in **weather-box** component)
+- weather-card (it is used in **weather-box** component)
 
 #### Smartphone features
 This project is responsive for most of devices in market and has two smartphone features:
@@ -42,9 +42,9 @@ This project is responsive for most of devices in market and has two smartphone 
 ```
 navigator.geolocation.getCurrentPosition(() => {
     if (this.setLocalStorageFinished()) {
-    this.router.navigate(['/home']);
+        this.router.navigate(['/home']);
     } else {
-    alert('Something went wrong! We can not save your local storage first access.');
+        alert('Something went wrong! We can not save your local storage first access.');
     }
 }, () => {
     alert('To use this app, you need to allow geolocation.');
@@ -73,7 +73,7 @@ share(): void {
 #### Style organized using BEM and Less
 In `assets/scss` folder you have a basic structure to organize **scss** of project.
 ```
-abstracts (variables and mixins being used project)
+abstracts (variables and mixins being used in the project)
 - mixins
 - variables
 
@@ -81,16 +81,17 @@ base (resetting browser style and typography style)
 - base
 - typography
 
-components (components being used in project)
+components (components being used in the project)
 - button
 
-layout (layout specifiications)
+layout (layout specifications)
 - header
 
-pages (pages in core-module)
+pages (pages in the core-module)
 - home
 - onboarding
 ```
+BEM (Block Element Modifier) approach is used in the .scss files.
 
 ## Running unit tests
 Run `npm test` to execute the unit tests via [Karma](https://karma-runner.github.io).
@@ -111,7 +112,7 @@ Run `npm test` to execute the unit tests via [Karma](https://karma-runner.github
 #### shared/test-mocks
 There are two mocks for test **request services**:
 - `mock-places.mock.ts` - [MOCK__PLACES]
-- `mock-consolidated.weather.mock.ts` - [MOCK__CONSOLIDATED_WEATHER]
+- `mock-consolidated-weather.mock.ts` - [MOCK__CONSOLIDATED_WEATHER]
 
 ## Build
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
