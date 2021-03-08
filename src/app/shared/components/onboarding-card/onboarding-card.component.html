@@ -6,6 +6,11 @@
             <p class="paragraph">{{ onboarding.description }}</p>
         </figcaption>
     </figure>
+    <div class="onboarding__step-bar">
+        <div class="onboarding__step-bar--options" [class.active]="onboarding.step === 0"></div>
+        <div class="onboarding__step-bar--options" [class.active]="onboarding.step === 1"></div>
+        <div class="onboarding__step-bar--options" [class.active]="onboarding.step === 2"></div>
+    </div>
     <div class="onboarding-button-box">
         <div class="onboarding-button-box__next" *ngIf="onboarding.step !== 2">
             <a href="javascript:void(0)" (click)="next()" class="btn btn--secondary">Next</a>

@@ -24,12 +24,12 @@
     </div>
   </div>
   <app-weather-box *ngIf="consolidatedWeather$ | async as consolidatedWeather; else loading" [consolidatedWeather]="consolidatedWeather"></app-weather-box>
-  <ng-container #loading>
+  <ng-template #loading>
     <div class="loading-box">
       <h1 class="primary-heading">
         <span class="primary-heading__main">Loading weather cards...</span>
         <span class="primary-heading__subtitle">We are getting data from MetaWeather api.</span>
       </h1>
     </div>
-  </ng-container>
+  </ng-template>
 </div>

@@ -1,6 +1,6 @@
 <div class="onboarding">
   <ng-container *ngFor="let onboarding of onboardingList">
     <app-onboarding-card [onboarding]="onboarding" *ngIf="onboarding.step === step"
-    (onNext)="next()" (onFinish)="finish()"></app-onboarding-card>
+    [@inOutAnimation] (onNext)="next()" (onFinish)="finish()"></app-onboarding-card>
   </ng-container>
 </div>
