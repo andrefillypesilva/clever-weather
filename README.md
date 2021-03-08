@@ -4,7 +4,7 @@ It is a simple application that shows the weather for the next couple of days.
 ## Instalation
 After clone this repository you will need to run `npm i` to install all dependencies.
 
-![Structure Diagram](https://github.com/andrefillypesilva/clever-weather/blob/master/cleverweather-showcase.png?raw=true)
+![Clever Weather - Showcase](https://github.com/andrefillypesilva/clever-weather/blob/main/cleverweather-showcase.png?raw=true)
 
 ## How to run
 To run this application in your local environment you will need only run `npm start` as defined in the package.json file (it will run the application with proxy).
