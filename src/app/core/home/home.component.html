@@ -2,10 +2,14 @@
   <div class="header">
     <div class="header__container">
       <div class="header__container--left">
-        <h1 class="primary-heading">
+        <h1 class="primary-heading" *ngIf="place">
           <span class="primary-heading__support">Welcome to</span>
           <span class="primary-heading__main" [innerHTML]="place"></span>
           <span class="primary-heading__subtitle">This is the forecast for the next 5 days for this location</span>
+        </h1>
+
+        <h1 class="primary-heading" *ngIf="!place">
+          <span class="primary-heading__main">Loading...</span>
         </h1>
       </div>
       <div class="header__container--right">
@@ -19,5 +23,13 @@
       </div>
     </div>
   </div>
-  <app-weather-box *ngIf="consolidatedWeather$ | async as consolidatedWeather" [consolidatedWeather]="consolidatedWeather"></app-weather-box>
+  <app-weather-box *ngIf="consolidatedWeather$ | async as consolidatedWeather; else loading" [consolidatedWeather]="consolidatedWeather"></app-weather-box>
+  <ng-container #loading>
+    <div class="loading-box">
+      <h1 class="primary-heading">
+        <span class="primary-heading__main">Loading weather cards...</span>
+        <span class="primary-heading__subtitle">We are getting data from MetaWeather api.</span>
+      </h1>
+    </div>
+  </ng-container>
 </div>
