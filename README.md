@@ -103,7 +103,7 @@ Run `npm test` to execute the unit tests via [Karma](https://karma-runner.github
 
 #### shared/services/local-storage.service.spec.ts
 - Test if **first-access** is different after call **setItem()**
-- Test if local-storage returns [null] when **fist-access** does not yet exist
+- Test if local-storage returns [null] when **first-access** does not yet exist
 
 #### shared/services/weather.service.spec.ts
 - Test if **getPlaceByName()** returns an object of [Place] and if it returns a mocked data for Lisbon
